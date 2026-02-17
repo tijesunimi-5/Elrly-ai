@@ -1,65 +1,67 @@
 import Image from "next/image";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/layout/Hero";
+import { FeatureCard } from "@/components/ui/FeatureCards";
+import { Button } from "@/components/ui/Button";
+import { Sparkles, Leaf, UtensilsCrossed } from "lucide-react";
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <Navbar />
+      <Hero />
+
+      {/* Why Elrly AI Section */}
+      <section className="py-24 container mx-auto px-6 text-center">
+        <span className="text-[#14F169] font-bold tracking-[0.2em] uppercase text-sm">Why Elrly AI?</span>
+        <h2 className="text-4xl md:text-5xl font-bold font-jakarta mt-6 mb-4">Smarter Cooking</h2>
+        <p className="text-[#6B7C74] max-w-lg mx-auto mb-16">
+          Stop staring at your fridge. Start creating amazing meals with zero waste.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6 text-left">
+          <FeatureCard
+            icon={<Sparkles size={24} />}
+            title="AI Discovery"
+            description="Instantly find gourmet recipes based on the exact stock in your pantry."
+          />
+          <FeatureCard
+            icon={<Leaf size={24} />}
+            title="Zero Waste"
+            description="We help you use every last ingredient before it expires. Save money and the planet."
+          />
+          <FeatureCard
+            icon={<UtensilsCrossed size={24} />}
+            title="Pro Quality"
+            description="Chef-vetted instructions that make complex flavors easy to achieve at home."
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Community CTA Section */}
+      <section className="pb-24 px-6">
+        <div className="container mx-auto bg-white rounded-[40px] p-8 md:p-16 border border-gray-100 flex flex-col lg:flex-row items-center gap-12">
+          <div className="lg:w-1/2 space-y-6">
+            <h2 className="text-4xl font-bold font-jakarta">Join 50k+ home chefs</h2>
+            <p className="text-[#6B7C74] text-lg">
+              Our community is reducing food waste by 30% on average. Ready to join the revolution?
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button>Get Started Free</Button>
+              <Button variant="secondary">Learn More</Button>
+            </div>
+          </div>
+          <div className="lg:w-1/2 bg-[#FDE8D9] rounded-4xl p-8 flex justify-center">
+            {/* Mockup Placeholder */}
+            <div className="w-60 h-120 bg-black rounded-[40px] border-8px border-gray-800 shadow-2xl relative overflow-hidden">
+              <Image src="/app-screenshot.jpg" alt="App interface" width={240} height={480} className="object-cover w-full h-full" />
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <Footer />
+    </main>
   );
 }
